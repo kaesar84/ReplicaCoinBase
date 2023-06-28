@@ -1,0 +1,228 @@
+// sass --watch sass/index.scss css/styles.css
+
+@use "components";
+
+@mixin section-display {
+  width: 100%;
+  max-width: 992px;
+  padding: 3rem;
+  margin: auto;
+}
+
+html {
+  min-width: 100vw;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.nav {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: solid 1px #ddd;
+  align-items: center;
+}
+
+.logo a img {
+  max-width: 7rem;
+}
+
+.sec-home {
+  display: flex;
+  align-items: center;
+  @include section-display();
+
+  .home-cta {
+    flex: 1;
+
+    .cta-text {
+      color: components.$color-main;
+    }
+
+    .home-title {
+      width: 20rem;
+      font-size: 3rem;
+    }
+
+    .home-description {
+      font-size: 1.25rem;
+      width: 300px;
+    }
+
+    // .lead-magnet{
+    //   .input-text{
+    //     max-width: 200px;
+    //   }
+    // }
+  }
+}
+
+//features
+.sec-features {
+  @include section-display();
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .intro {
+    text-align: center;
+    h3 {
+      font-size: 1.8rem;
+    }
+    p {
+      font-size: 0.8rem;
+      color: #888;
+    }
+  }
+
+  .features {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    .text {
+      padding: 2rem 0;
+      flex: 1;
+
+      .feature {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .description {
+          margin-left: 1rem;
+          max-width: 18rem;
+          .description-title {
+            font-size: 1.15rem;
+          }
+          .description-text {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+
+    .image {
+      width: 55%;
+
+      img {
+        max-width: 25rem;
+        margin-left: 2rem;
+      }
+    }
+  }
+}
+
+.sec-benefits {
+  border-top: 1px solid #dddd;
+  padding-bottom: 3rem;
+  .intro {
+    @extend .sec-features, .intro;
+  }
+}
+
+.sec-kpis {
+  width: 100%;
+  height: auto;
+  background-color: components.$color-main;
+  color: white;
+  padding: 2rem;
+
+  .kpi {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    .number {
+      font-size: 4rem;
+    }
+    .desc {
+      color: #acbfff;
+    }
+  }
+}
+
+.sec-onboarding {
+  .intro {
+    @extend .sec-features, .intro;
+  }
+
+  .steps {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0 7rem 5rem 7rem;
+
+    .step-separator {
+      flex: 1;
+      border-top: 1px solid #ddd;
+      margin: 0 1rem;
+    }
+  }
+}
+
+.sec-footer-cta {
+  background-color: components.$color-footer;
+  padding: 5rem;
+  display: flex;
+  flex-direction: row;
+  background-image: url(../assets/img/footer.webp);
+  background-repeat: no-repeat;
+  background-position: 100%;
+  background-size: contain;
+
+  .footer-cta {
+    width: 50%;
+    .cta-title {
+      font-size: 2rem;
+    }
+    .cta-description {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .sec-onboarding {
+    .steps {
+      flex-direction: column;
+      .icon-desc {
+        .title {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .sec-footer-cta {
+    background-image: none;
+
+    .footer-cta {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .sec-benefits {
+    .intro {
+      text-align: center;
+      h3 {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .sec-features {
+    .intro {
+      p {
+        font-size: 1rem;
+      }
+      h3 {
+        font-size: 2rem;
+      }
+    }
+  }
+}
